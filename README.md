@@ -15,3 +15,5 @@ Once you have access token, you can then do
 $ git push
 Username: <my-username wjantispam>
 Password: <my-personal-access-token>
+
+Install GitHub CLI and autenticate via `gh auth login`. See https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git#github-cli
