@@ -1,6 +1,9 @@
 "
 "  :so %    " source this file
 "
+" Get use to VIM not Vi
+set nocompatible
+
 let g:solarized_termtrans = 1
 colorscheme solarized8_flat
 
