@@ -319,3 +319,8 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 
+## WSL Related Config
+# Fix screen permission issue 
+# https://github.com/microsoft/WSL/issues/1245
+export SCREENDIR=$HOME/.screen
+[ -d $SCREENDIR ] || mkdir -p -m 700 $SCREENDIR
