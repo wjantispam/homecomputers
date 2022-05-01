@@ -1,0 +1,17 @@
+startup_message off
+
+# Enable mouse scrooling and scrool bar history scrollling
+termcapinfo xterm-color ti@:te@
+
+# Window numbering starts at 1, not 0.
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
+# Pretty bits
+# hardstatus alwayslastline
+hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+# hardcopydir:  The directory which contains all hardcopies.
+hardcopydir ~/.screen

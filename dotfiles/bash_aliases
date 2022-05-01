@@ -2,3 +2,6 @@
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
+alias developer='source /home/dean/developer/config/config.profile; q /home/dean/developer/launcher.q_ '
