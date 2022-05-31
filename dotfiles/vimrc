@@ -3,6 +3,7 @@
 "
 " Get use to VIM not Vi
 set nocompatible
+set paste
 
 let g:solarized_termtrans = 1
 colorscheme solarized8_flat
@@ -16,7 +17,7 @@ set backspace=indent,eol,start
 set noswapfile
 
 set clipboard=unnamed " so you can copy from other programs to vim
-set number relativenumber    " use :set nu! rnu! to toggle it on or off
+set number " relativenumber    " use :set nu! rnu! to toggle it on or off
 
 let $RTP=split(&runtimepath, ',')[0]
 let $RC="$HOME/.vim/vimrc"
@@ -24,4 +25,5 @@ set path=.,**
 
 " Python
 set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
-
+" Only map the ones you most frequently need
+map <F2> :! bash % <enter>
