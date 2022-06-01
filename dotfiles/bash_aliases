@@ -1,5 +1,9 @@
 ##############################################################################
 # Set up the shortcuts
+# edita : Edit bash[a]liases
+# editb : Edit[b]ashrc file
+# edits : Edit[s]creenrc file
+# editv : Edit[v]imrc file
 ##############################################################################
 
 alias ll='ls -lrth'
@@ -8,11 +12,13 @@ alias lla='ls -lrtha'
 alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
 alias developer='source /home/dean/developer/config/config.profile; q /home/dean/developer/launcher.q_ '
 
+# Fucking Fast File Manager!
 f() {
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
-alias eds='vim $HOME/.screenrc'
-alias edb='vim $HOME/.bashrc'
-alias edv='vim $HOME/.vimrc'
+alias edits='vim $HOME/.screenrc'
+alias editb='vim $HOME/.bashrc; source $HOME/.bashrc'
+alias edita='vim $HOME/.bash_aliases'
+alias editv='vim $HOME/.vimrc'
