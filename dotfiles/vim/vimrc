@@ -29,4 +29,4 @@ set path=.,**
 " Python
 set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
 " Only map the ones you most frequently need
-map <F2> :! bash % <enter>
+map <F2> :! echo ====$(date)====; bash % <enter>
