@@ -1,7 +1,18 @@
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+##############################################################################
+# Set up the shortcuts
+##############################################################################
+
+alias ll='ls -lrth'
+alias lla='ls -lrtha'
 
 alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
 alias developer='source /home/dean/developer/config/config.profile; q /home/dean/developer/launcher.q_ '
+
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+alias eds='vim $HOME/.screenrc'
+alias edb='vim $HOME/.bashrc'
+alias edv='vim $HOME/.vimrc'
