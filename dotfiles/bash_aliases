@@ -22,3 +22,6 @@ alias edits='vim $HOME/.screenrc'
 alias editb='vim $HOME/.bashrc; source $HOME/.bashrc'
 alias edita='vim $HOME/.bash_aliases'
 alias editv='vim $HOME/.vimrc'
+
+alias sql='mysql --socket=/var/lib/mysql/mysql.sock'
+alias startsql='sudo /etc/init.d/mariadb start'
