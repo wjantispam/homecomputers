@@ -26,7 +26,35 @@ let $RTP=split(&runtimepath, ',')[0]
 let $RC="$HOME/.vim/vimrc"
 set path=.,** 
 
+" Enable folding
+" you have to type za to fold (and unfold).
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with spacebar
+nnoremap <space> zaG
+
+
 " Python
-set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
+" set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
+au BufNewFile, BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+	\ set smartindent
+    \ set fileformat=unix
+
+" For full stack development, you can use another au command for each filetype:
+au BufNewFile, BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+
+" Flagging Unnecessary Whitespace
+au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 " Only map the ones you most frequently need
 map <F2> :! echo ====$(date)====; bash % <enter>
