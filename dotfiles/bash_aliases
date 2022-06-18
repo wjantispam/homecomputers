@@ -3,3 +3,32 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
+=======
+##############################################################################
+# Set up the shortcuts
+# edita : Edit bash[a]liases
+# editb : Edit[b]ashrc file
+# edits : Edit[s]creenrc file
+# editv : Edit[v]imrc file
+##############################################################################
+
+alias ll='ls -lrth'
+alias lla='ls -lrtha'
+
+alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
+alias developer='source /home/dean/developer/config/config.profile; q /home/dean/developer/launcher.q_ '
+
+# Fucking Fast File Manager!
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
+alias edits='vim $HOME/.screenrc'
+alias editb='vim $HOME/.bashrc; source $HOME/.bashrc'
+alias edita='vim $HOME/.bash_aliases'
+alias editv='vim $HOME/.vimrc'
+
+alias sql='mysql --socket=/var/lib/mysql/mysql.sock'
+alias startsql='sudo /etc/init.d/mariadb start'
+>>>>>>> 9b591ca7a703f00829a662f6054dc3d1b778eeaf

@@ -1,17 +1,115 @@
 startup_message off
 
+##########################################################################################
+## Reload this settign without restart screen:                                          
+##  ctrl+a :source ~/.screenrc    ##        Use ctrl+a R should work too
+## Other useful features:
+##########################################################################################
+
 # Enable mouse scrooling and scrool bar history scrollling
-termcapinfo xterm-color ti@:te@
+defscrollback 30000
+# TODO: nouse scrooling doesn't work
+termcapinfo xterm* ti@:te@
+
+# so it won't seem like there is a delay when entering copy mode
+msgminwait 0
+
+# Always accidenlty locked my screen with ctrl-a x, so let's disable it!
+## Thanks to https://www.pantz.org/software/screen/disabling_gnu_screen_lock_screen.html
+bind ^x
+bind x
 
 # Window numbering starts at 1, not 0.
 bind c screen 1
 bind ^c screen 1
-bind 0 select 10
+bind 0 select 10 # Use command '0' to jump to window #10, that's where it is on your keyboard!
 screen 1
 
+shelltitle      '>> |bash'
+
+
+##
+## Get F-Keys emulated properly
+##
+#############################################################################
+## http://www.gnu.org/software/screen/manual/screen.html#Input-Translation ##
+#############################################################################
+terminfo * k1=\033OP
+terminfo * k2=\033OQ
+terminfo * k3=\033OR
+terminfo * k4=\033OS
+terminfo * k5=\E[15~
+terminfo * k6=\E[17~
+terminfo * k7=\E[18~
+terminfo * k8=\E[19~
+terminfo * k9=\E[20~
+terminfo * k;=\E[21~
+terminfo * F1=\E[23~
+terminfo * F2=\E[24~
+##
+## Easy window switcher and command runner.
+##
+######################################################################
+## Too much keybinding makes you weak on a different environment    ##
+######################################################################
+# TODO: Why it always opens up a new tab
+#bindkey -k k5 eval "source $HOME/.screenrc;"  # F5
+# Bind ^a+R to reload .screenrc http://serverfault.com/a/326384/339237
+bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"
+bind } history
+# https://xaizek.github.io/2015-11-08/switching-from-tmux-to-gnu-screen/
+    # vim-like navigation between windows
+        bind h focus left
+        bind j focus down
+        bind k focus up
+        bind l focus right
+
 # Pretty bits
-# hardstatus alwayslastline
-hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+hardstatus alwayslastline
+hardstatus string "%{= KW}Session: %S %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%C%a %Y-%M-%d"
+## With backtick cmd option
+#hardstatus string "%{= KW}Session: %S [%`] %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%C%a %Y-%M-%d"
+#
+# http://www.gnu.org/software/screen/manual/html_node/String-Escapes.html
+#
+# %{= wK} : set colors to bright white (W) on bright black (K) and keep current text styles (=)
+# %H      : session name
+# [       : opening bracket character
+# %`      : print output of 'backtick' command (defined elsewhere in .screenrc)
+# ]       : closing bracket character
+# %{= wW} : set colors to white (w) on bright black (K) and keep current text styles (=)
+# |       : bar character
+# ${-}    : restore colors to previous colors / undo last color change
+# %-Lw    : list windows before current window (L [optional] = "include flags")
+# %{= bW} : set colors to bright white (W) on blue (b) and keep current text styles (=)
+# %f      : window flags
+# %t      : window title
+# %{-}    : restore colors to previous colors / undo last color change
+# %+Lw    : list windows after current window (L [optional] = "include flags")
+# %=      : expand to fill all space (used here to make remaining content flush right)
+# %C      : current time (12-hr; 24-hr is %c)
+# %a      : am/pm (lowercase; uppercase is %A)
+# %Y      : current year
+# -       : hyphen character
+# %m      : current month (0-padded; %M for "Jan" etc.)
+# -       : hyphen character
+# %d      : current date (0-padded)
+
+# hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+#hardstatus string '%{wk}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+#caption always "%{=b dy}{ %{= dy}Session %S @ %H %{=b dw}} %{=b dy} %={ %?%{= dc}%-Lw%?%{+b dy}(%{-b r}%n:%t%{+b dy})%?(%u)%?%{-dc}%?%{= dc}%+Lw%? %{=b dy}}"
+caption always "%?%F%{.BY}%?[ %{+b R}%n %t%{-} %= ]%? %?%{.YB}[ %{r}%l%{-} ]%?"
+#caption always "%?%F%{.BY}%?[ %-Lw%{+b M}%n %t%{-}%+LW %= ]%? %?%{.YB}[ %{r}%l%{-} ]%?"
+# %{.BY}    : Blue background Yellow text
+# [         : plain text to mark sections
+# %-Lw      : list windows before current window (L [optional] = "include flags")
+# %{+b M}   : M means the text color: Magenta, +b means set the text bold
+# %n        : current window number
+# %t        : current window title
+# %{-}      : restore colors to previous colors / undo last color change
+# %l        : current load of the system
 
 # hardcopydir:  The directory which contains all hardcopies.
 hardcopydir ~/.screen
+
