@@ -1,12 +1,21 @@
 "
 "  :so %    " source this file
-"
-" Get use to VIM not Vi
+" Enable Python 3 support
+" $ sudo apt remove vim && sudo apt remove --auto-remove vim
+" $ sudo rm -rf /usr/local/share/vim /usr/bin/vim
+" $ cd && git clone https://github.com/vim/vim.git
+" $ cd vim/src
+" $ ./configure --with-features=huge --enable-python3interp
+" $ make
+" $ sudo make install
+
 set nocompatible
 set paste
 
 let g:solarized_termtrans = 1
-colorscheme solarized8_flat
+colorscheme darkblue
+set background=dark 
+" colorscheme solarized8_flat
 
 "let g:slime_target = "screen"
 "let g:slime_target = "vimterminal"
@@ -34,27 +43,77 @@ set foldlevel=99
 nnoremap <space> zaG
 
 
+
+" kdb q
+" https://github.com/patmok/qvim/blob/master/.vimrc
+hi Special ctermfg=red " for query specific keywords
+hi Underlined ctermfg=magenta cterm=bold " for local variables
+set tags=tags;
+
 " Python
 " set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
 au BufNewFile, BufRead *.py
     \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-	\ set smartindent
-    \ set fileformat=unix
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ smartindent
+    \ fileformat=unix
 
 " For full stack development, you can use another au command for each filetype:
 au BufNewFile, BufRead *.js, *.html, *.css
     \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+    \ softtabstop=2
+    \ shiftwidth=2
 
 
 " Flagging Unnecessary Whitespace
-au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead, BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+" au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Only map the ones you most frequently need
-map <F2> :! echo ====$(date)====; bash % <enter>
+" REMEMBER you can always run in vim as ! clear; python %
+" https://stackoverflow.com/questions/18948491/running-python-code-in-vim
+map <F3> :! echo "====$(date)====" && bash -c shellescape(expand('%'))<enter>
+" map <F3> :! echo "====$(date)===="; bash -c % <enter>
+"autocmd FileType python map <buffer> <F2> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+"autocmd FileType python imap <buffer> <F2> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+augroup python_files
+  autocmd!
+  autocmd FileType python map <buffer> <F2> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+  autocmd FileType python imap <buffer> <F2> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+augroup END
+
+augroup q_files
+  autocmd!
+  autocmd FileType *.q map <buffer> <F4> :w<CR>:exec '!$HOME/q/l64/q' shellescape(@%, 1)<CR>
+  "autocmd FileType *.q map <buffer> <F2> :w<CR>:exec '! $HOME/q/l64/q' shellescape(@%, 1)<CR>
+  autocmd FileType *.q imap <buffer> <F4> <esc>:w<CR>:exec '!$HOME/q/l64/q' shellescape(@%, 1)<CR>
+augroup END
+
+" inoremap <nowait> jk <ESC>
+" inoremap <nowait> kj <ESC>
+" vnoremap <nowait> jk <ESC>
+cnoremap jk <C-C>  
+" esc in insert mode 
+inoremap jk <esc> 
+
+
+call plug#begin()
+" https://github.com/junegunn/vim-plug
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+Plug 'dense-analysis/ale'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
