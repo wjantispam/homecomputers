@@ -23,8 +23,8 @@ HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=9000
+HISTFILESIZE=9000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -323,8 +323,12 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 
+. "$HOME/.cargo/env"
+source ~/.alacritty_bash_completion
+
 ## WSL Related Config
 # Fix screen permission issue 
 # https://github.com/microsoft/WSL/issues/1245
+
 export SCREENDIR=$HOME/.screen
 [ -d $SCREENDIR ] || mkdir -p -m 700 $SCREENDIR

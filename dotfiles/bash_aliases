@@ -1,3 +1,9 @@
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias q='QHOME=~/q rlwrap -r ~/q/l64/q'
+
 ##############################################################################
 # Set up the shortcuts
 # edita : Edit bash[a]liases
