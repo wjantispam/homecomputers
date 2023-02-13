@@ -13,14 +13,10 @@ set nocompatible
 set paste
 
 let g:solarized_termtrans = 1
-<<<<<<< HEAD:dotfiles/vim/vimrc
-colorscheme darkblue
+" colorscheme darkblue
 set background=dark 
 " colorscheme solarized8_flat
-=======
-" colorscheme solarized8_flat
-colorscheme murphy 
->>>>>>> da96c1e9e6d638c39f3fb7079e796ca39a3839df:dotfiles/vimrc
+" colorscheme murphy 
 
 "let g:slime_target = "screen"
 "let g:slime_target = "vimterminal"
@@ -59,7 +55,6 @@ set tags=tags;
 " set shiftwidth=4 tabstop=4 softtabstop=4 expandtab autoindent smartindent
 au BufNewFile, BufRead *.py
     \ set tabstop=4
-<<<<<<< HEAD:dotfiles/vim/vimrc
     \ softtabstop=4
     \ shiftwidth=4
     \ textwidth=79
@@ -67,15 +62,6 @@ au BufNewFile, BufRead *.py
     \ autoindent
     \ smartindent
     \ fileformat=unix
-=======
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set smartindent
-    \ set fileformat=unix
->>>>>>> da96c1e9e6d638c39f3fb7079e796ca39a3839df:dotfiles/vimrc
 
 " For full stack development, you can use another au command for each filetype:
 au BufNewFile, BufRead *.js, *.html, *.css
@@ -118,7 +104,10 @@ inoremap jk <esc>
 
 
 call plug#begin()
-" https://github.com/junegunn/vim-plug
+" Install via https://github.com/junegunn/vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dir https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Reload .vimrc and :PlugInstall to install plugins.
+
 " Make sure you use single quotes
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
