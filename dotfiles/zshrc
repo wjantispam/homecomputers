@@ -1,3 +1,5 @@
+# Use VIM mode
+# set -o vi
 # If you come from bash you might have to change your $PATH.
 # /home/dean/.local/bin has ipython3
 export PATH=$HOME/bin:/usr/local/bin:/home/dean/.local/bin:$HOME/q/l64:$PATH
@@ -74,7 +76,10 @@ ZSH_THEME="crcandy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# https://github.com/jeffreytse/zsh-vi-mode#-usage
 plugins=(git)
+plugins+=(zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
