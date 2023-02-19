@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/jiangwei/main/github/homecomputers/dotfiles/nvim/lua'
+let g:netrw_dirhist_4='/home/jiangwei/main/github/homecomputers/dotfiles/nvim/lua/custom'
+let g:netrw_dirhist_3='/home/jiangwei/main/github/homecomputers/dotfiles/nvim/lua/custom/plugins'
 let g:netrw_dirhist_2='/home/dean/.vim'
 let g:netrw_dirhist_1='/home/dean/.screen'
