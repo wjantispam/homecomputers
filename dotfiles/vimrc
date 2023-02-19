@@ -90,10 +90,8 @@ au BufRead, BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Only map the ones you most frequently need
 " REMEMBER you can always run in vim as ! clear; python %
 " https://stackoverflow.com/questions/18948491/running-python-code-in-vim
-" map <F3> :! echo "====$(date)====" && bash -c shellescape(expand('%'))<enter>
-map <F3> :! clear && echo "====$(date)===="; bash % <enter>
-"autocmd FileType python map <buffer> <F2> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-"autocmd FileType python imap <buffer> <F2> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+"map <F3> :! echo "====$(date)====" && bash -c shellescape(expand('%'))<enter>
+map <F3> :w<CR>:! clear && echo "====$(date)===="; bash % <CR>
 
 augroup python_files
   autocmd!
