@@ -21,7 +21,6 @@ let g:solarized_termtrans = 1
 set background=dark 
 " colorscheme solarized8_flat
 " colorscheme murphy 
-
 "let g:slime_target = "screen"
 "let g:slime_target = "vimterminal"
 

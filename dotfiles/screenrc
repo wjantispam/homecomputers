@@ -113,4 +113,3 @@ caption always "%?%F%{.BY}%?[ %{+b R}%n %t%{-} %= ]%? %?%{.YB}[ %{r}%l%{-} ]%?"
 
 # hardcopydir:  The directory which contains all hardcopies.
 hardcopydir ~/.screen
-
