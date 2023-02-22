@@ -2,7 +2,7 @@
 # set -o vi
 # If you come from bash you might have to change your $PATH.
 # /home/dean/.local/bin has ipython3
-export CDPATH=$HOME/main/dev
+export CDPATH=$HOME/main/dev/
 export PATH=$HOME/bin:/usr/local/bin:/home/dean/.local/bin:$HOME/q/l64:$PATH
 
 # Path to your oh-my-zsh installation.
