@@ -332,3 +332,7 @@ source ~/.alacritty_bash_completion
 
 export SCREENDIR=$HOME/.screen
 [ -d $SCREENDIR ] || mkdir -p -m 700 $SCREENDIR
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
