@@ -1,5 +1,5 @@
 # Use VIM mode
-set -o vi
+# set -o vi
 # If you come from bash you might have to change your $PATH.
 # /home/dean/.local/bin has ipython3
 export CDPATH=$HOME/main/dev/
@@ -8,7 +8,7 @@ export PATH=$HOME/bin:/usr/local/bin:/home/dean/.local/bin:$HOME/q/l64:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-if [[ "$pc" == DESK* ]]; then
+if [[ "$HOSTNAME" == DESK* ]]; then
   # WSL terminal supports the Nerd font
   eval "$(oh-my-posh init zsh --config ~/.poshthemes/hunk.omp.json)"
 else
@@ -121,6 +121,9 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+function tt() {
+  touch "$1" && chmod +x $_
+}
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -130,8 +133,8 @@ source $ZSH/oh-my-zsh.sh
 which nvim >/dev/null 2>&1 && alias vim="nvim"
 alias edzsh="vim ~/.zshrc"
 alias q="QHOME=~/q rlwrap -r -D 1 -f . -S 'q) ' ~/q/l64/q"
-alias tmux="tmux attach -t study || tmux new -s study"
+alias mm="tmux attach -t study || tmux new -s study"
 alias dblocal="mariadb -u jianwei -p111"
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
