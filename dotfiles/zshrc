@@ -18,8 +18,9 @@ else
 fi
 
 # Simple
-# eval "$(oh-my-posh init zsh --config ~/.poshthemes/di4am0nd.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.poshthemes/di4am0nd.omp.json)"
 # eval "$(oh-my-posh init zsh --config ~/.poshthemes/onehalf.minimal.omp.json)"
+# eval "$(oh-my-posh init zsh --config ~/.poshthemes/stelbent-compact.minimal.omp.json)"
 # eval "$(oh-my-posh init zsh --config ~/.poshthemes/easy-term.omp.json)"
 # eval "$(oh-my-posh init zsh --config ~/.poshthemes/1_shell.omp.json)"
 # eval "$(oh-my-posh init zsh --config ~/.poshthemes/clean-detailed.omp.json)"
@@ -29,7 +30,7 @@ fi
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="steeef"
-ZSH_THEME="crcandy"
+#ZSH_THEME="crcandy"
 #ZSH_THEME="candy"
 #ZSH_THEME="jonathan"
 
