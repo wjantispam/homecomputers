@@ -234,3 +234,4 @@ $ q/m64/q
 
 with fish shell the alias is
 `alias q='QHOME=~/q rlwrap -r ~/q/m64/q`
+funcsave q
