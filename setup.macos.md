@@ -1,7 +1,16 @@
 
+# Standard settings
+Change scroll direction
+
 
 
 # Standard Installations
+
+I'm using Homebrew to manage my application.  Install `xcode-select --install`  via 'Terminal App' first, then run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`  
+
+NB: I tried to use the Transfer Assistant to copy my files/application from Intel MBP to AMD M1 MBP that failed because the app do not support the AMD architecture.
+
+
 
 ```
 # Let brew to manage packages
@@ -14,28 +23,27 @@ brew install --cask visual-studio-code
 brew install gh
 brew install fish
 - Enable as default
-- echo /usr/local/bin/fish | sudo tee -a /etc/shells
-- chsh -s /usr/local/bin/fish
-brew install tree
-brew install fzf
-— /usr/local/opt/fzf/install
-— 	Key bindings (CTRL-T, CTRL-R, and ALT-C) (available for bash, zsh and fish)
-brew install rlwrap # useful for q commands
+- echo $(which fish) | sudo tee -a /etc/shells
+- chsh -s $(which fish) 
 
 brew install --cask obsidian
-brew install --cask atom
+brew install --cask sublime
 brew install --cask foxitreader
+brew install --cask microsoft-onenote
 brew install mariadb
 
-brew install exercism
-
-brew install fzf
+brew install tree
+brew install fzf    # Key bindings (CTRL-T, CTRL-R, and ALT-C)
 brew install bat
 brew install rg     # ripgrep
 brew install ripgrep
+brew install rlwrap # useful for q commands
 
+brew install exercism
 
-brew install --cask microsoft-onenote
+# Install Nerd Front
+# Ref: https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
+brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font
 ```
 
 
@@ -43,17 +51,6 @@ brew install --cask microsoft-onenote
 Disable firewall and run below to avoid gatekeeper error
 `sudo spctl --master-disable`
 
-Also 
-`xcode-select --install`
- this will install /Library/Developer/CommandLineTools/usr/bin/python3
-
-
-Other installs
-
-# Install Nerd Front
-## Ref: https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
-
-brew tap homebrew/cask-fonts && brew install --cask font-meslo-lg-nerd-font
 
 # Install Fish Tide manager
 ## brew install fish
@@ -254,21 +251,3 @@ It is now Option + Tab because Comamnd + Tab switches between remote dekstop to 
 Command + Tab: Swithc applications
 Command + backtick: Switch within the application
 	I changed Mission Control -> Application windows -> Command + §
-=======
-```
-$ unzip m64.zip -d $HOME/q
-# Install the licence file
-$ tree q
-q
-├── kc.lic
-├── m64
-│   └── q
-└── q.k
-$ cd spctl --add q/m64/q
-$ xattr -d com.apple.quarantine q/m64/q
-$ q/m64/q
-```
-
-with fish shell the alias is
-`alias q='QHOME=~/q rlwrap -r ~/q/m64/q`
-funcsave q
