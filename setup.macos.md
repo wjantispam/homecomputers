@@ -254,3 +254,21 @@ It is now Option + Tab because Comamnd + Tab switches between remote dekstop to 
 Command + Tab: Swithc applications
 Command + backtick: Switch within the application
 	I changed Mission Control -> Application windows -> Command + §
+=======
+```
+$ unzip m64.zip -d $HOME/q
+# Install the licence file
+$ tree q
+q
+├── kc.lic
+├── m64
+│   └── q
+└── q.k
+$ cd spctl --add q/m64/q
+$ xattr -d com.apple.quarantine q/m64/q
+$ q/m64/q
+```
+
+with fish shell the alias is
+`alias q='QHOME=~/q rlwrap -r ~/q/m64/q`
+funcsave q
