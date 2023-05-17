@@ -1,16 +1,10 @@
-## Install iMac
-
-### Upgrade Issues
-Disable firewall and run below to avoid gatekeeper error
-`sudo spctl --master-disable`
-
-Also 
-`xcode-select --install`
- this will install /Library/Developer/CommandLineTools/usr/bin/python3
 
 
 
+# Standard Installations
 
+```
+# Let brew to manage packages
 Install home-brew
 
 brew install --cask google-chrome
@@ -31,10 +25,27 @@ brew install rlwrap # useful for q commands
 brew install --cask obsidian
 brew install --cask atom
 brew install --cask foxitreader
+brew install mariadb
+
+brew install exercism
+
+brew install fzf
+brew install bat
+brew install rg     # ripgrep
+brew install ripgrep
 
 
+brew install --cask microsoft-onenote
+```
 
 
+##  Upgrade Issues
+Disable firewall and run below to avoid gatekeeper error
+`sudo spctl --master-disable`
+
+Also 
+`xcode-select --install`
+ this will install /Library/Developer/CommandLineTools/usr/bin/python3
 
 
 Other installs
@@ -165,8 +176,29 @@ This is how to enable it in iTerm2
 Based here https://superuser.com/questions/84998/equivalent-alternatives-for-altdot-in-mac this is the set up in the Terminal but I haven't tried
 Terminal.app, Preferences->Settings, select the Keyboard tab. Ensure "Use Option Key as Meta" is checked.
 
-# Config Python for Development
+# Config Development Environment
+## Install kdb+
 
+```
+$ unzip m64.zip -d $HOME/q
+# Install the licence file
+$ tree q
+q
+├── kc.lic
+├── m64
+│   └── q
+└── q.k
+$ cd spctl --add q/m64/q
+$ xattr -d com.apple.quarantine q/m64/q
+$ q/m64/q
+```
+
+with fish shell the alias is
+`alias q='QHOME=~/q rlwrap -r ~/q/m64/q'`
+using `alias --save` to write it to /Users/dean/.config/fish/functions/q.fish
+
+
+## Config Python for Development
 
 
 ## Install virtualfish
@@ -189,21 +221,22 @@ https://github.com/IlanCosman/tide/wiki/Configuration#virtual_env
 while doing research on existing problems I found https://wiki.nikiv.dev/unix/shell/fish is interesting site to storge knowledge.
 
 
-## Tools
+## Other useful python tools
 Once you are in the virtualenv (`vf activate venv`  here I have created an env called "venv")
 
 Fancy REPL https://github.com/bpython/bpython
 `$ pip install bpython`
 
 
+# Quarks and Fun things with MacOS
 
-# Tricks for Obsidian
+## Tricks for Obsidian
 
 1.  Use symlink
 `ln -s /Users/dean/Documents/main/dev/py/project-euler/euler-problems.txt ~/Documents/main/notes/euler-problems.md` 
 
 
-# Tricks with Citrix
+## Tricks with Citrix
 Preference -> Disable "Show Workspace in menu bar"
 Diable "Enable and match client DPI Scale settings" - let the client to manage it
 Keyboard
@@ -216,21 +249,8 @@ gor the Alt key to work with client's terminal you will need to restart Citrix
 How to use Alt+Tab?
 It is now Option + Tab because Comamnd + Tab switches between remote dekstop to local macos
 
-# Install kdb+
 
-```
-$ unzip m64.zip -d $HOME/q
-# Install the licence file
-$ tree q
-q
-├── kc.lic
-├── m64
-│   └── q
-└── q.k
-$ cd spctl --add q/m64/q
-$ xattr -d com.apple.quarantine q/m64/q
-$ q/m64/q
-```
-
-with fish shell the alias is
-`alias q='QHOME=~/q rlwrap -r ~/q/m64/q`
+## MacOS (Ventura 13.3) Tips
+Command + Tab: Swithc applications
+Command + backtick: Switch within the application
+	I changed Mission Control -> Application windows -> Command + §
